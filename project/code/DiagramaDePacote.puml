@@ -1,0 +1,32 @@
+@startuml
+package "Sistema de Aluguel" {
+    [Gestão de Pedidos e Contratos] {
+        class Cliente
+        class Pedido
+        class ContratoCredito
+        class Automovel
+        class Agente
+        class Banco
+    }
+
+    package "Construção Dinâmica de Páginas Web" {
+        class WebInterface {
+            +mostrarPedidos()
+            +mostrarContratos()
+            +mostrarAutomoveis()
+        }
+    }
+
+    Cliente -- Pedido
+    Pedido -- ContratoCredito
+    Pedido -- Automovel
+    Agente -- Pedido
+    Banco -- ContratoCredito
+
+    WebInterface -- Cliente
+    WebInterface -- Pedido
+    WebInterface -- ContratoCredito
+    WebInterface -- Automovel
+}
+
+@enduml
