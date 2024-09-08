@@ -1,32 +1,24 @@
 @startuml
-package "Sistema de Aluguel" {
-    [Gestão de Pedidos e Contratos] {
-        class Cliente
-        class Pedido
-        class ContratoCredito
-        class Automovel
-        class Agente
-        class Banco
-    }
 
-    package "Construção Dinâmica de Páginas Web" {
-        class WebInterface {
-            +mostrarPedidos()
-            +mostrarContratos()
-            +mostrarAutomoveis()
-        }
-    }
-
-    Cliente -- Pedido
-    Pedido -- ContratoCredito
-    Pedido -- Automovel
-    Agente -- Pedido
-    Banco -- ContratoCredito
-
-    WebInterface -- Cliente
-    WebInterface -- Pedido
-    WebInterface -- ContratoCredito
-    WebInterface -- Automovel
+' Define pacotes
+package "Pacote de Usuários" {
+  class Usuario
+  class Cliente
+  class Agente
+  class Banco
 }
+
+package "Pacote de Aluguel" {
+  class PedidoAluguel
+  class Automovel
+  class ContratoCredito
+}
+
+Usuario <|-- Cliente
+Usuario <|-- Agente
+Cliente --> PedidoAluguel : "gerencia"
+Agente --> PedidoAluguel : "analisando"
+Agente --> Automovel : "registrando"
+Banco --> ContratoCredito : "associando"
 
 @enduml

@@ -1,25 +1,38 @@
 @startuml
-actor Cliente
-actor Agente
-actor Banco
 
-usecase "Introduzir pedido de aluguel" as UC1
-usecase "Modificar pedido de aluguel" as UC2
-usecase "Consultar pedido de aluguel" as UC3
-usecase "Cancelar pedido de aluguel" as UC4
-usecase "Modificar pedido" as UC5
-usecase "Avaliar pedido" as UC6
-usecase "Executar contrato" as UC7
+left to right direction
 
-Cliente -- UC1
-Cliente -- UC2
-Cliente -- UC3
-Cliente -- UC4
+actor Usuario as U
+actor Cliente as C
+actor Agente as A
+actor Banco as B
 
-Agente -- UC5
-Agente -- UC6
+U <|-- C
+U <|-- A
 
-Banco -- UC6
-Banco -- UC7
+usecase "Cadastro de Usuários" as UC1
+usecase "Login no Sistema" as UC2
+usecase "Introduzir Pedido de Aluguel" as UC3
+usecase "Modificar Pedido de Aluguel" as UC4
+usecase "Consultar Pedido de Aluguel" as UC5
+usecase "Cancelar Pedido de Aluguel" as UC6
+usecase "Analisar Pedido de Aluguel" as UC7
+usecase "Registro de Automóveis" as UC8
+usecase "Associar Contrato de Crédito ao Aluguel" as UC9
+
+U --> UC1
+U --> UC2
+
+C --> UC3
+C --> UC4
+C --> UC5
+C --> UC6
+
+A --> UC4
+A --> UC5
+A --> UC7
+A --> UC8
+
+B --> UC9
 
 @enduml
