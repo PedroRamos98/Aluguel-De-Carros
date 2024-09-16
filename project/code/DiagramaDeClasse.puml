@@ -17,10 +17,8 @@ class Cliente {
   -profissao: String
   -entidadesEmpregadoras: List<String>
   -rendimentos: List<Float>
-  +introduzirPedidoAluguel(): void
-  +modificarPedidoAluguel(): void
-  +consultarPedidoAluguel(): void
-  +cancelarPedidoAluguel(): void
+
+  +cadastrar(): void
 }
 
 class Agente {
@@ -35,12 +33,18 @@ class Banco {
   -idBanco: int
   -nomeBanco: String
   +associarContratoCredito(): void
+  +aprovarContratoCredito(contrato: ContratoCredito): void
+  +negarContratoCredito(contrato: ContratoCredito): void
 }
 
 class PedidoAluguel {
   -idPedido: int
   -dataPedido: Date
   -status: String
+  +introduzirPedidoAluguel(cliente: Cliente): void
+    +modificarPedidoAluguel(cliente: Cliente): void
+    +consultarPedidoAluguel(cliente: Cliente): void
+    +cancelarPedidoAluguel(cliente: Cliente): void
   +analisar(): void
 }
 
@@ -62,12 +66,14 @@ class ContratoCredito {
 Usuario <|-- Cliente
 Usuario <|-- Agente
 Agente --> PedidoAluguel : analisar()
-Cliente --> PedidoAluguel : introduzirPedidoAluguel()
-Cliente --> PedidoAluguel : modificarPedidoAluguel()
-Cliente --> PedidoAluguel : consultarPedidoAluguel()
-Cliente --> PedidoAluguel : cancelarPedidoAluguel()
+Cliente --> PedidoAluguel : introduzirPedidoAluguel(cliente: Cliente)
+Cliente --> PedidoAluguel : modificarPedidoAluguel(cliente: Cliente)
+Cliente --> PedidoAluguel : consultarPedidoAluguel(cliente: Cliente)
+Cliente --> PedidoAluguel : cancelarPedidoAluguel(cliente: Cliente)
 Agente --> Automovel : registrarAutomovel()
 Banco --> ContratoCredito : associarContratoCredito()
+Banco --> ContratoCredito : aprovarContratoCredito(contrato: ContratoCredito)
+Banco --> ContratoCredito : negarContratoCredito(contrato: ContratoCredito)
 PedidoAluguel --> Automovel : possui
 PedidoAluguel --> ContratoCredito : associado
 
