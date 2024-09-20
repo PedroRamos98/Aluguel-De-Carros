@@ -12,8 +12,3 @@ O projeto tem como objetivo desenvolver um sistema de aluguel de automóveis que
 
 ## Instruções de utilização
 Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
-
-
-
-
-Teste
