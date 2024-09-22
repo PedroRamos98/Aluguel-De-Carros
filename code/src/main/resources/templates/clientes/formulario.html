@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulário de Cliente</title>
+</head>
+<body>
+<h1 th:if="${cliente.id == null}">Novo Cliente</h1>
+<h1 th:if="${cliente.id != null}">Editar Cliente</h1>
+
+<form th:action="@{/clientes}" th:object="${cliente}" method="post">
+    <input type="hidden" th:if="${cliente.id != null}" th:field="*{id}" />
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" th:field="*{nome}" id="nome" required />
+    </div>
+    <div>
+        <label for="cpf">CPF:</label>
+        <input type="text" th:field="*{cpf}" id="cpf" required />
+    </div>
+    <div>
+        <label for="endereco">Endereço:</label>
+        <input type="text" th:field="*{endereco}" id="endereco" required />
+    </div>
+    <div>
+        <label for="profissao">Profissão:</label>
+        <input type="text" th:field="*{profissao}" id="profissao" required />
+    </div>
+    <button type="submit">Salvar</button>
+</form>
+
+<a href="/clientes">Voltar para a lista de clientes</a>
+</body>
+</html>
