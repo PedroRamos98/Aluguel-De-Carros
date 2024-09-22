@@ -1,31 +1,46 @@
-package org.example.alugueldecarros.model;
-
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import java.util.List;
 
 @Entity
-@NoArgsConstructor
-@Getter
-@Setter
-public class Usuario {
+public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "nome", nullable = false)
     private String nome;
+    private String rg;
+    private String cpf;
+    private String endereco;
+    private String profissao;
 
-    @Column(name = "email", nullable = false)
-    private String email;
+    @ElementCollection
+    private List<String> entidadesEmpregadoras;
 
-    @Column(name = "senha", nullable = false)
-    private String senha;
+    @ElementCollection
+    private List<Float> rendimentos;
 
-    public boolean login(String email, String senha) {
-        return this.email.equals(email) && this.senha.equals(senha);
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public String getRg() { return rg; }
+    public void setRg(String rg) { this.rg = rg; }
+
+    public String getCpf() { return cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
+
+    public String getEndereco() { return endereco; }
+    public void setEndereco(String endereco) { this.endereco = endereco; }
+
+    public String getProfissao() { return profissao; }
+    public void setProfissao(String profissao) { this.profissao = profissao; }
+
+    public List<String> getEntidadesEmpregadoras() { return entidadesEmpregadoras; }
+    public void setEntidadesEmpregadoras(List<String> entidadesEmpregadoras) { this.entidadesEmpregadoras = entidadesEmpregadoras; }
+
+    public List<Float> getRendimentos() { return rendimentos; }
+    public void setRendimentos(List<Float> rendimentos) { this.rendimentos = rendimentos; }
 }
