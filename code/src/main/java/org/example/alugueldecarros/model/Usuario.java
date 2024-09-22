@@ -1,8 +1,10 @@
+package org.example.alugueldecarros.model;
+
 import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class Cliente {
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
