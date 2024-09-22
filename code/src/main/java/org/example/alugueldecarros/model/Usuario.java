@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "dtype")
 public class Usuario {
 
     @Id
@@ -22,6 +24,7 @@ public class Usuario {
     @ElementCollection
     private List<Float> rendimentos;
 
+    // Getters e Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
