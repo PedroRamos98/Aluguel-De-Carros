@@ -1,0 +1,45 @@
+@startuml
+
+left to right direction
+package "Gestão de Pedidos e Contratos" {
+  [ClienteController]
+  [PedidoController]
+  [ContratoController]
+  [ClienteService]
+  [PedidoService]
+  [ContratoService]
+  [ClienteRepository]
+  [PedidoRepository]
+  [ContratoRepository]
+  [H2 Database]
+}
+
+package "Construção Dinâmica de Páginas Web" {
+  [formularioCliente.html]
+  [listaClientes.html]
+  [formularioPedido.html]
+  [listaPedidos.html]
+  [formularioContrato.html]
+  [listaContratos.html]
+}
+
+[ClienteController] --> [ClienteService]
+[PedidoController] --> [PedidoService]
+[ContratoController] --> [ContratoService]
+
+[ClienteService] --> [ClienteRepository]
+[PedidoService] --> [PedidoRepository]
+[ContratoService] --> [ContratoRepository]
+
+[ClienteRepository] --> [H2 Database]
+[PedidoRepository] --> [H2 Database]
+[ContratoRepository] --> [H2 Database]
+
+[ClienteController] --> [formularioCliente.html]
+[ClienteController] --> [listaClientes.html]
+[PedidoController] --> [formularioPedido.html]
+[PedidoController] --> [listaPedidos.html]
+[ContratoController] --> [formularioContrato.html]
+[ContratoController] --> [listaContratos.html]
+
+@enduml
