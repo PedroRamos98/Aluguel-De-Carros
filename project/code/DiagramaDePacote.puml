@@ -1,24 +1,39 @@
 @startuml
 
-' Define pacotes
-package "Pacote de Usuários" {
-  class Usuario
+' Definir pacotes conforme o padrão MVC
+package "Model" {
   class Cliente
   class Agente
   class Banco
-}
-
-package "Pacote de Aluguel" {
   class PedidoAluguel
   class Automovel
   class ContratoCredito
 }
 
-Usuario <|-- Cliente
-Usuario <|-- Agente
-Cliente --> PedidoAluguel : "gerencia"
-Agente --> PedidoAluguel : "analisando"
-Agente --> Automovel : "registrando"
-Banco --> ContratoCredito : "associando"
+package "View" {
+  class PedidoAluguelView
+  class AutomovelView
+  class ContratoCreditoView
+}
+
+package "Controller" {
+  class PedidoAluguelController
+  class AutomovelController
+  class ContratoCreditoController
+}
+
+Cliente --> PedidoAluguelController : "gerencia"
+Agente --> PedidoAluguelController : "analisando"
+Agente --> AutomovelController : "registrando"
+Banco --> ContratoCreditoController : "associando"
+
+PedidoAluguelController --> PedidoAluguelView : "atualiza"
+AutomovelController --> AutomovelView : "atualiza"
+ContratoCreditoController --> ContratoCreditoView : "atualiza"
+
+
+PedidoAluguelController --> PedidoAluguel : "manipula"
+AutomovelController --> Automovel : "manipula"
+ContratoCreditoController --> ContratoCredito : "manipula"
 
 @enduml

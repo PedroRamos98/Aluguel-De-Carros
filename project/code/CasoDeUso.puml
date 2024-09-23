@@ -10,8 +10,6 @@ actor Banco as B
 U <|-- C
 U <|-- A
 
-usecase "Autocadastro" as UC0
-
 usecase "Login no Sistema" as UC2
 usecase "Introduzir Pedido de Aluguel" as UC3
 usecase "Modificar Pedido de Aluguel" as UC4
@@ -23,8 +21,6 @@ usecase "Associar Contrato de Crédito ao Aluguel" as UC9
 usecase "Aprovar Contrato de Crédito" as UC10
 usecase "Editar informações próprias" as UC1
 usecase "Cadastrar Usuário" as UC11
-
-C --> UC0
 
 U --> UC1
 U --> UC2
