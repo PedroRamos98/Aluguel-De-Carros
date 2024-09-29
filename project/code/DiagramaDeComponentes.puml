@@ -15,7 +15,7 @@ package "Gestão de Pedidos e Contratos" {
 }
 
 package "SGBD"{
-  [Database]
+  [JPA]
  }
 
 package "Construção Dinâmica de Páginas Web" {
@@ -35,9 +35,9 @@ package "Construção Dinâmica de Páginas Web" {
 [PedidoService] --> [PedidoRepository]
 [ContratoService] --> [ContratoRepository]
 
-[ClienteRepository] --> [Database]
-[PedidoRepository] --> [Database]
-[ContratoRepository] --> [Database]
+[ClienteRepository] --> [JPA]
+[PedidoRepository] --> [JPA]
+[ContratoRepository] --> [JPA]
 
 [ClienteController] --> [formularioCliente.html]
 [ClienteController] --> [listaClientes.html]
