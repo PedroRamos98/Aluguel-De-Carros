@@ -11,8 +11,12 @@ package "Gestão de Pedidos e Contratos" {
   [ClienteRepository]
   [PedidoRepository]
   [ContratoRepository]
-  [H2 Database]
+
 }
+
+package "SGBD"{
+  [Database]
+ }
 
 package "Construção Dinâmica de Páginas Web" {
   [formularioCliente.html]
@@ -31,9 +35,9 @@ package "Construção Dinâmica de Páginas Web" {
 [PedidoService] --> [PedidoRepository]
 [ContratoService] --> [ContratoRepository]
 
-[ClienteRepository] --> [H2 Database]
-[PedidoRepository] --> [H2 Database]
-[ContratoRepository] --> [H2 Database]
+[ClienteRepository] --> [Database]
+[PedidoRepository] --> [Database]
+[ContratoRepository] --> [Database]
 
 [ClienteController] --> [formularioCliente.html]
 [ClienteController] --> [listaClientes.html]
