@@ -1,0 +1,47 @@
+@startuml
+title Diagrama de Implantação
+
+' Definir nós
+node "Servidor Web" {
+  [Aplicação Web]
+}
+
+node "Servidor de Banco de Dados" {
+  [MySQL]
+}
+
+node "Cliente" {
+  [Navegador Web]
+}
+
+node "Servidor de Aplicação" {
+  [Spring Boot]
+  node "Camada Controller" {
+    [ClienteController]
+    [PedidoController]
+    [ContratoController]
+  }
+  node "Camada Service" {
+    [ClienteService]
+    [PedidoService]
+    [ContratoService]
+  }
+  node "Camada Repository" {
+    [ClienteRepository]
+    [PedidoRepository]
+    [ContratoRepository]
+  }
+}
+
+' Definir interações
+[Navegador Web] --> [Aplicação Web] : HTTP Request
+[Aplicação Web] --> [Spring Boot] : REST API Call
+[Spring Boot] --> [MySQL] : JPA Queries
+[ClienteController] --> [ClienteService]
+[PedidoController] --> [PedidoService]
+[ContratoController] --> [ContratoService]
+[ClienteService] --> [ClienteRepository]
+[PedidoService] --> [PedidoRepository]
+[ContratoService] --> [ContratoRepository]
+
+@enduml
