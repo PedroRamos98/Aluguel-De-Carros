@@ -20,7 +20,16 @@
             <label for="dataTermino" class="form-label">Data de Término</label>
             <input type="date" class="form-control" id="dataTermino" th:field="*{dataTermino}" required>
         </div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
+
+        <label for="automovel">Automóvel:</label>
+        <select name="automovelId" id="automovel">
+            <option value="" disabled selected>Selecione um automóvel</option>
+            <th:block th:each="automovel : ${automoveis}">
+                <option th:value="${automovel.id}" th:text="${automovel.marca + ' ' + automovel.modelo + ' (' + automovel.placa + ')'}"></option>
+            </th:block>
+        </select>
+
+        <button type="submit">Alugar</button>
     </form>
 </div>
 </body>

@@ -18,8 +18,15 @@ VALUES (1000, 5500.00),
        (2000, 10000.00),
        (3000, 7500.00);
 
+-- Inserir Automóveis
+INSERT INTO automovel (id, matricula, ano, marca, modelo, placa, cliente_id)
+VALUES (1000, 'ABC1234', 2020, 'Toyota', 'Corolla', 'XYZ-1234', 1000),
+       (2000, 'DEF5678', 2019, 'Honda', 'Civic', 'ABC-5678', 2000),
+       (3000, 'GHI9012', 2021, 'Ford', 'Focus', 'DEF-9012', 3000);
+
 -- Inserir Pedidos de Aluguel
-INSERT INTO pedido_aluguel (id_pedido, cliente_id, data_inicio, data_termino, status)
-VALUES (1000, 1000, '2023-09-01', '2023-09-10', 'PENDENTE'),
-       (2000, 2000, '2023-09-05', '2023-09-12', 'APROVADO'),
-       (3000, 3000, '2023-09-08', '2023-09-15', 'RECUSADO');
+INSERT INTO pedido_aluguel (id_pedido, cliente_id, automovel_id, data_inicio, data_termino, status)
+VALUES (1000, 1000, 1000, '2023-09-01', '2023-09-10', 'PENDENTE'),
+       (2000, 2000, 2000, '2023-09-05', '2023-09-12', 'APROVADO'),
+       (3000, 3000, 3000, '2023-09-08', '2023-09-15', 'RECUSADO');
+

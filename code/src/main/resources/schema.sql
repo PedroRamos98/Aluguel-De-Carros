@@ -27,8 +27,22 @@ CREATE TABLE IF NOT EXISTS usuario_rendimentos (
 CREATE TABLE IF NOT EXISTS pedido_aluguel (
                                               id_pedido BIGINT AUTO_INCREMENT PRIMARY KEY,
                                               cliente_id BIGINT,
+                                              automovel_id BIGINT,
                                               data_inicio DATE,
                                               data_termino DATE,
                                               status VARCHAR(255),
     FOREIGN KEY (cliente_id) REFERENCES usuario(id) ON DELETE CASCADE
+    );
+
+
+-- Criação da tabela automovel (já existindo)
+CREATE TABLE IF NOT EXISTS automovel (
+                                         id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                                         matricula VARCHAR(255) NOT NULL,
+    ano INT NOT NULL,
+    marca VARCHAR(255) NOT NULL,
+    modelo VARCHAR(255) NOT NULL,
+    placa VARCHAR(255) NOT NULL,
+    cliente_id BIGINT,
+    FOREIGN KEY (cliente_id) REFERENCES usuario(id) ON DELETE SET NULL
     );

@@ -18,6 +18,10 @@ public class PedidoAluguel {
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
+    @ManyToOne
+    @JoinColumn(name = "automovel_id", nullable = false)
+    private Automovel automovel;
+
     private LocalDate dataInicio;
 
     private LocalDate dataTermino;
